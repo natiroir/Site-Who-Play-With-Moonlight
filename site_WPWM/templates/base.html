@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>{% block title %}WPWM - Who Play With Moonlight{% endblock %}</title>
+</head>
+<body class="bg-[#071D49] text-white">
+    <!-- HERO EN PREMIER (Disparait au scroll) -->
+    {% block hero %}{% endblock %}
+
+    <!-- HEADER STICKY (Reste visible au scroll) -->
+    <header class="bg-[#050F2E] shadow-lg sticky top-0 z-50">
+        <nav class="max-w-7xl mx-auto px-6 py-4">
+            <ul class="flex gap-6 justify-center">
+                {% for key, link in menu_links.items %}
+                    <li>
+                        <a href="{% url link.url_name %}" class="px-4 py-2 hover:bg-[#071D49] rounded transition duration-200 inline-block">
+                            {{ link.name }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </nav>
+    </header>
+
+    <!-- CONTENU PRINCIPAL -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#050F2E] text-center py-6 mt-12">
+        <p>&copy; 2025 Who Play With Moonlight</p>
+    </footer>
+</body>
+</html>
