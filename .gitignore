@@ -53,3 +53,4 @@ staticfiles/
 
 # Media files
 /media/
+staticfiles/

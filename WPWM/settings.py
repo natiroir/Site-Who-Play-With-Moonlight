@@ -32,6 +32,25 @@ DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 
+ALLOWED_HOSTS += ['.onrender.com']
+
+# En production, Render définit 'RENDER_EXTERNAL_HOSTNAME'
+if 'RENDER_EXTERNAL_HOSTNAME' in os.environ:
+    ALLOWED_HOSTS.append(os.environ['RENDER_EXTERNAL_HOSTNAME'])
+
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+STATIC_URL = '/static/'
+
+# Dossier où Django va regrouper tous les fichiers statiques lors du déploiement
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Dossiers où Django ira chercher les fichiers statiques dans chaque app
+STATICFILES_DIRS = []  # Laisse vide si tu n’as pas de dossier static global en plus des apps
+
+# Optionnel : pour servir les fichiers en prod
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 # Application definition
 
