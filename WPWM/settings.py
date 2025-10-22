@@ -52,6 +52,10 @@ STATICFILES_DIRS = []  # Laisse vide si tu n’as pas de dossier static global e
 # Optionnel : pour servir les fichiers en prod
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
+DJANGO_SETTINGS_MODULE = 'WPWM.settings'
+
+
+
 # Application definition
 
 INSTALLED_APPS = [
